@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐỒ ÁN 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>FIRE WARNING</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>DANH MỤC</h2>
+            <ul>
+                <li><a href="#" onclick="showSection('main')">KHU VỰC</a></li>
+                <li><a href="#" onclick="showSection('khuVuc1')">KHU VỰC 1</a></li>
+                <li><a href="#" onclick="showSection('khuVuc2')">KHU VỰC 2</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div id="main-section" class="section">
+                <h2>KHU VỰC</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <h3>KHU VỰC 1</h3>
+                        <p>Nhiệt độ : <span id="temp_khuVuc1">15</span>°C</p>
+                        <p>Độ ẩm : <span id="hum_khuVuc1">14</span>%</p>
+                        <p>Gas : <span id="gas_khuVuc1">80</span>ppm</p>
+                        <button class="button-show" onclick="scrollToSection('khuVuc1-section')">Show</button>
+                    </div>
+                    <div class="card">
+                        <h3>KHU VỰC 2</h3>
+                        <p>Nhiệt độ : <span id="temp_khuVuc2">15</span>°C</p>
+                        <p>Độ ẩm : <span id="hum_khuVuc2">12</span>%</p>
+                        <p>Gas : <span id="gas_khuVuc2">29</span>ppm</p>
+                        <button class="button-show" onclick="scrollToSection('khuVuc2-section')">Show</button>
+                    </div>
+                    
+                    <div class="canhbao">    
+                        <img id="loakhuVucTong" src="./img/loaoff.jpg" alt="Cảnh báo" class="alert-image" style="width: 60px;">
+                        <h2>Loa cảnh Báo</h2>
+                    </div>
+                    <div class="nguong">                      
+                        <div class="slider-container">
+                            <label for="temp-threshold1">Nhiệt độ giới hạn: <span id="temp-value1">47</span></label>
+                            <input type="range" id="temp-threshold1" min="0" max="100" value="47" oninput="updateThresholdValue('temp-value1', this.value)">
+                            <button onclick="sendThreshold(1, 'temp')">Đặt</button>
+                        </div>
+
+                        <div class="slider-container">
+                            <label for="humidity-threshold1">Độ ẩm giới hạn: <span id="humidity-value1">49</span></label>
+                            <input type="range" id="humidity-threshold1" min="0" max="100" value="49" oninput="updateThresholdValue('humidity-value1', this.value)">
+                            <button onclick="sendThreshold(1, 'humidity')">Đặt</button>
+                        </div>
+
+                        <div class="slider-container">
+                            <label for="gas-threshold1">Khói giới hạn: <span id="gas-value1">87</span></label>
+                            <input type="range" id="gas-threshold1" min="0" max="100" value="87" oninput="updateThresholdValue('gas-value1', this.value)">
+                            <button onclick="sendThreshold(1, 'gas')">Đặt</button>
+                        </div>
+                        <h2>Giá Trị Ngưỡng</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="khuVuc1-section" class="section" style="display: none;">
+                <h2>KHU VỰC 1</h2>
+                <div class="gauge-container">
+                    <!-- First Row with Temperature, Humidity, and Gas Detect -->
+                    <div class="gauge-row">
+                        <div class="sensor">
+                            <div class="temperature">
+                                <div class="status">
+                                    <div class="info">
+                                        <h3>Nhiệt độ</h3>
+                                        <div class="unit">
+                                            <h1 id="temp_khuVuc1_display">15</h1>
+                                            <h1>°C</h1>
+                                        </div>
+                                    </div>
+                                    <div class="sensor-icon">
+                                        <img src="img/nhietdo.png" alt="temp">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="humidity">
+                                <div class="status">
+                                    <div class="info">
+                                        <h3>Độ ẩm</h3>
+                                        <div class="unit">
+                                            <h1 id="hum_khuVuc1_display">12</h1>
+                                            <h1>%</h1>
+                                        </div>
+                                    </div>
+                                    <div class="sensor-icon">
+                                        <img src="img/doam.png" alt="hum">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="gas-detect">
+                                <div class="status">
+                                    <div class="info">
+                                        <h3>Gas</h3>
+                                        <div class="unit">
+                                            <h1 id="gas_khuVuc1_display">80</h1>
+                                            <h1>ppm</h1>
+                                        </div>
+                                    </div>
+                                    <div class="sensor-icon">
+                                        <img src="./img/gas-sensor.png" alt="gas">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="canhbaokhuvuc">    
+                                <img id="loakhuVuckhuVuc1" src="./img/loaoff.jpg" alt="Cảnh báo" class="alert-image" style="width: 60px;">
+                                <h2>Loa cảnh Báo</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Khu vực 2 -->
+            <div id="khuVuc2-section" class="section" style="display: none;">
+                <h2>KHU VỰC 2</h2>
+                <div class="gauge-container">
+                    <!-- First Row with Temperature, Humidity, and Gas Detect -->
+                    <div class="gauge-row">
+                        <div class="sensor">
+                            <div class="temperature">
+                                <div class="status">
+                                    <div class="info">
+                                        <h3>Nhiệt độ</h3>
+                                        <div class="unit">
+                                            <h1 id="temp_khuVuc2_display">15</h1>
+                                            <h1>°C</h1>
+                                        </div>
+                                    </div>
+                                    <div class="sensor-icon">
+                                        <img src="img/nhietdo.png" alt="temp">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="humidity">
+                                <div class="status">
+                                    <div class="info">
+                                        <h3>Độ ẩm</h3>
+                                        <div class="unit">
+                                            <h1 id="hum_khuVuc2_display">12</h1>
+                                            <h1>%</h1>
+                                        </div>
+                                    </div>
+                                    <div class="sensor-icon">
+                                        <img src="img/doam.png" alt="hum">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="gas-detect">
+                                <div class="status">
+                                    <div class="info">
+                                        <h3>Gas</h3>
+                                        <div class="unit">
+                                            <h1 id="gas_khuVuc2_display">80</h1>
+                                            <h1>ppm</h1>
+                                        </div>
+                                    </div>
+                                    <div class="sensor-icon">
+                                        <img src="./img/gas-sensor.png" alt="gas">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="canhbaokhuvuc">    
+                                <img id="loakhuVuckhuVuc2" src="./img/loaoff.jpg" alt="Cảnh báo" class="alert-image" style="width: 60px;">
+                                <h2>Loa cảnh Báo</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script>
+        // Cấu hình Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyAZfsdk3UdPUsyAQxpznYs-OYw-xmw_HAA",
+          authDomain: "do-an-2-32d30.firebaseapp.com",
+          projectId: "do-an-2-32d30",
+          storageBucket: "do-an-2-32d30.appspot.com",
+          messagingSenderId: "654331727845",
+          appId: "1:654331727845:web:c0c6714e28c6746d3aa90c",
+          databaseURL: "https://do-an-2-32d30-default-rtdb.firebaseio.com/"
+        };
+  
+        // Khởi tạo Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        console.log(app);
+        console.log(database);
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "giaTriNguong": {
+    "gas": 50,
+    "nhiệt_độ": 50,
+    "độ_ẩm": 50
+  },
+  "khuVuc1": {
+    "gas": 40,
+    "loaCanhBao": "off",
+    "nhiệt_độ": 30,
+    "độ_ẩm": 90
+  },
+  "khuVuc2": {
+    "gas": 34,
+    "loaCanhBao": "off",
+    "nhiệt_độ": 20,
+    "độ_ẩm": 90
+  }
+}
