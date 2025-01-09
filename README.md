@@ -41,4 +41,4 @@ Dự án **Fire Warning** được thiết kế để giám sát và hiển th�
 ## Thông tin liên hệ
 - **Tác giả:** Hứa Văn Chiến
 - **Email:** huachien.1903@gmail.com
-- **GitHub:** *(https://github.com/huachien/ProjectMonHoc)*
+- **GitHub:** *https://github.com/huachien/ProjectMonHoc*
